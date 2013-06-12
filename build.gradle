@@ -38,7 +38,7 @@ task gruntCoffee(type: GruntTask) {
     args "coffee"
 }
 
-installApp.dependsOn gruntCoffee
+processResources.dependsOn gruntCoffee
 
 task gruntWatch(type: GruntBackgroundTask) {
     args "watch"
@@ -53,7 +53,7 @@ task wrapper(type: Wrapper) {
 import org.apache.tools.ant.taskdefs.condition.Os
 class GruntTask extends DefaultTask {
     List<String> args = []
-    
+
     @TaskAction
     void gruntexec() {
         project.exec {
@@ -65,7 +65,7 @@ class GruntTask extends DefaultTask {
     protected String getExecutableName() {
         Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
     }
-    
+
     void args(String... args) {
         this.args.addAll(args.toList())
     }
