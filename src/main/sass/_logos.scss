@@ -1,4 +1,4 @@
-$logo-width: 250px;
+$logo-width: 300px;
 
 @mixin scale-image($image, $to-width: $logo-width) {
 	background-image: image-url($image);
@@ -16,7 +16,10 @@ $logo-width: 250px;
 			size: contain;
 		}
 		text-indent: -9999px;
-		margin-right: rhythm(1);
+		margin: {
+			left: rhythm(0.5);
+			right: rhythm(0.5);
+		}
 
 		@include margin-leader(1);
 		@include margin-trailer(1);
