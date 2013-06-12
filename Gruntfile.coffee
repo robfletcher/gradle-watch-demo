@@ -8,5 +8,13 @@ module.exports = (grunt) ->
           src: ["./src/main/coffee/**/*.coffee"]
           dest: "./src/ratpack/public/scripts/app.js"
         ]
- 
+
+    watch:
+      scripts:
+        files: ["./src/main/coffee/**/*.coffee"]
+        tasks: ["coffee"]
+        options:
+          nospawn: true
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-watch"
