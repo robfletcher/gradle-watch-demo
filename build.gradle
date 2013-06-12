@@ -1,7 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.Os
-import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.TaskAction
-
 buildscript {
     repositories {
         maven { url "http://oss.jfrog.org/repo" }
@@ -39,13 +35,13 @@ run.dependsOn watchSass
 installApp.dependsOn compileSass
 
 task gruntCoffee(type: GruntTask) {
-    gruntArgs = "coffee"
+    args "coffee"
 }
 
 installApp.dependsOn gruntCoffee
 
 task gruntWatch(type: GruntBackgroundTask) {
-    gruntArgs = "watch"
+    args "watch"
 }
 
 run.dependsOn gruntWatch
@@ -54,20 +50,28 @@ task wrapper(type: Wrapper) {
     gradleVersion = "1.6"
 }
 
+import org.apache.tools.ant.taskdefs.condition.Os
 class GruntTask extends DefaultTask {
-    String gruntArgs = ""
-
+    List<String> args = []
+    
     @TaskAction
     void gruntexec() {
         project.exec {
-            executable = Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
-            args = gruntArgs.trim().split(" ") as List
+            executable = getExecutableName()
+            args = this.args
         }
+    }
+
+    protected String getExecutableName() {
+        Os.isFamily(Os.FAMILY_WINDOWS) ? "grunt.cmd" : "grunt"
+    }
+    
+    void args(String... args) {
+        this.args.addAll(args.toList())
     }
 }
 
 class GruntBackgroundTask extends GruntTask {
-    @TaskAction
     @Override
     void gruntexec() {
         Thread.start {
