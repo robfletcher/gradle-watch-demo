@@ -1,1 +1,3 @@
-/.gradle
+/.gradle/
+/.sass-cache/
+/.jruby/

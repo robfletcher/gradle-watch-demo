@@ -1,0 +1,35 @@
+$header-font: league-gothic, sans-serif;
+$body-font: merriweather, serif;
+
+$background-color: #efefef;
+$text-color: #222;
+
+@import "compass";
+
+*, *:before, *:after {
+	@include box-sizing(border-box);
+}
+
+html {
+	background-color: $background-color;
+	color: $text-color;
+}
+
+body {
+	font: {
+		family: $body-font;
+	}
+	padding: 0 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font: {
+		family: $header-font;
+	}
+	text-transform: uppercase;
+}
+
+.logos {
+	padding: 0;
+	list-style: none;
+}

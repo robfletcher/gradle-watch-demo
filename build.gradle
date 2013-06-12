@@ -1,12 +1,15 @@
-apply plugin: 'ratpack-groovy'
+apply plugin: "ratpack-groovy"
+apply plugin: "compass"
 
 buildscript {
     repositories {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "http://dl.bintray.com/robfletcher/gradle-plugins" }
         mavenCentral()
     }
     dependencies {
-        classpath 'org.ratpack-framework.netty:ratpack-gradle:0.7.0-SNAPSHOT'
+        classpath "org.ratpack-framework.netty:ratpack-gradle:0.7.0-SNAPSHOT"
+        classpath "org.gradle.plugins:gradle-compass:1.0.6"
     }
 }
 
@@ -17,9 +20,21 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
 }
 
+compass {
+  cssDir = file("src/ratpack/public/styles")
+  sassDir = file("src/main/sass")
+  imagesDir = file("src/ratpack/public/images")
+  javascriptsDir = file("src/ratpack/public/scripts")
+  importPath = files("src/external/sass")
+}
+
+clean.dependsOn cleanCompileSass
+run.dependsOn watchSass
+installApp.dependsOn compileSass
+
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = "1.6"
 }
