@@ -2,3 +2,6 @@
 /.sass-cache/
 /.jruby/
 /.gradletasknamecache
+*.ipr
+*.iml
+*.iws
