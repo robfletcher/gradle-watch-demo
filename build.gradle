@@ -38,6 +38,12 @@ clean.dependsOn cleanCompileSass
 run.dependsOn watchSass
 installApp.dependsOn compileSass
 
+task gruntCoffee(type: GruntTask) {
+    gruntArgs = "coffee"
+}
+
+installApp.dependsOn gruntCoffee
+
 task gruntWatch(type: GruntBackgroundTask) {
     gruntArgs = "watch"
 }
