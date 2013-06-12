@@ -39,6 +39,7 @@ body {
 
 h1 {
 	text-align: center;
+	text-shadow: 0 3px 8px #aaa;
 
 	@include adjust-font-size-to(72px);
 	@include rhythm(0, 2, 0, 2, 72px);
@@ -63,7 +64,9 @@ h1 {
 }
 
 #site-footer {
-	@include contrasted($text-color);
+	text-shadow: 0 2px 3px #222;
+
+	@include contrasted(#444);
 	@include adjust-font-size-to($footer-font-size);
 	@include padding-leader(2, $footer-font-size);
 	@include padding-trailer(2, $footer-font-size);
