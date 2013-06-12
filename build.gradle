@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "org.ratpack-framework:ratpack-gradle:0.9.0-SNAPSHOT"
-        classpath "org.gradle.plugins:gradle-compass:1.0.6"
+        classpath "org.gradle.plugins:gradle-compass:1.0.7"
     }
 }
 
@@ -28,8 +28,6 @@ compass {
   cssDir = file("src/ratpack/public/styles")
   sassDir = file("src/main/sass")
   imagesDir = file("src/ratpack/public/images")
-  javascriptsDir = file("src/ratpack/public/scripts")
-  importPath = files("src/external/sass")
 }
 
 clean.dependsOn cleanCompileSass
