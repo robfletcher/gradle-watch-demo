@@ -6,7 +6,7 @@ module.exports = (grunt) ->
           bare: true
         files: [
           src: ["./src/main/coffee/**/*.coffee"]
-          dest: "./src/ratpack/public/scripts/app.js"
+          dest: "./src/ratpack/public/scripts/demo.js"
         ]
 
     watch:
