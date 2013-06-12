@@ -17,6 +17,7 @@ $logo-width: 250px;
 		}
 		text-indent: -9999px;
 		margin-right: rhythm(1);
+
 		@include margin-leader(1);
 		@include margin-trailer(1);
 

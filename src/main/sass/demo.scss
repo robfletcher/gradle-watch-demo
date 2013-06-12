@@ -1,5 +1,5 @@
 $header-font: league-gothic, sans-serif;
-$body-font: merriweather, serif;
+$body-font: lora, serif;
 
 $background-color: #efefef;
 $text-color: #222;
@@ -28,11 +28,24 @@ body {
 #{headings()} {
 	font: {
 		family: $header-font;
+		weight: 400;
 	}
 	text-transform: uppercase;
 }
 
+h1 {
+	text-align: center;
+
+	@include adjust-font-size-to(64px);
+
+	+ p {
+		font-style: italic;
+		text-align: center;
+
+		@include adjust-font-size-to(20px);
+	}
+}
+
 .logos {
-	padding: 0;
-	list-style: none;
+	text-align: center;
 }
