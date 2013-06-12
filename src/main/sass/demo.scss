@@ -5,6 +5,9 @@ $background-color: #efefef;
 $text-color: #222;
 
 @import "compass";
+@import "logos";
+
+@include establish-baseline;
 
 *, *:before, *:after {
 	@include box-sizing(border-box);
@@ -22,7 +25,7 @@ body {
 	padding: 0 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+#{headings()} {
 	font: {
 		family: $header-font;
 	}
