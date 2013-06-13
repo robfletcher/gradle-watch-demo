@@ -17,7 +17,6 @@ apply plugin: "idea"
 repositories {
     maven { url "http://oss.jfrog.org/repo" }
     mavenCentral()
-    maven { url "http://repo.springsource.org/repo" } // for springloaded
 }
 
 dependencies {
@@ -44,7 +43,10 @@ task gruntWatch(type: GruntBackgroundTask) {
     args "watch"
 }
 
-run.dependsOn gruntWatch
+run {
+    dependsOn gruntWatch
+    systemProperty "ratpack.reloadable", "true"
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = "1.6"
